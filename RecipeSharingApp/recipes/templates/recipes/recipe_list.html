@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Рецепты</title>
+</head>
+<body>
+    <h1>Список рецептов</h1>
+    {% for recipe in recipes %}
+        <h2>{{ recipe.title }}</h2>
+        <p>{{ recipe.description }}</p>
+        <hr>
+    {% endfor %}
+</body>
+</html>
