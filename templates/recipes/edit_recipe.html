@@ -1,0 +1,68 @@
+<!DOCTYPE html>#Шаблон редактирования рецепта-->
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Редактировать рецепт</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            max-width: 600px;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            background-color: #f9f9f9;
+        }
+        label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+        input[type="text"],
+        textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            resize: vertical;
+        }
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <h1>Редактировать рецепт</h1>
+    <form method="POST" action="">
+        {% csrf_token %}
+        <label for="title">Название рецепта:</label>
+        <input type="text" id="title" name="title" value="{{ recipe.title }}" required />
+
+        <label for="description">Описание:</label>
+        <textarea id="description" name="description" rows="4" required>{{ recipe.description }}</textarea>
+
+        <label for="ingredients">Ингредиенты:</label>
+        <textarea id="ingredients" name="ingredients" rows="4" required>{{ recipe.ingredients }}</textarea>
+
+        <label for="instructions">Инструкции:</label>
+        <textarea id="instructions" name="instructions" rows="6" required>{{ recipe.instructions }}</textarea>
+
+        <button type="submit">Сохранить изменения</button>
+    </form>
+</body>
+</html>
