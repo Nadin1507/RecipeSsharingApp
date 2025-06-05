@@ -1,21 +1,37 @@
+# class Ingredients(models.Model):
+#     id = models.IntegerField(primary_key=True)
+#     recipe = models.ForeignKey(Recipes, on_delete=models.CASCADE, related_name='ingredients')
+#     ingredient = models.CharField(max_length=128)
+#
+#     class Meta:
+#         managed = False
+#         db_table = 'ingredients'
+#         verbose_name_plural = 'Ingredients'
+#
+#     def __str__(self):
+#         return f"{self.id} {self.recipe} - {self.ingredient}"
+
+
 from django.db import models
 
-class Recipe(models.Model): # Создаём новый класс, который будет служить для блога моделью, указывая все необходимые элементы.
-    title = models.CharField(max_length=200)
-    description = models.TextField()
-    ingredients = models.TextField()
-    instructions = models.TextField()
-   # category = models.ForeignKey(Category, on_delete=models.SET_NULL, null=True, related_name='recipes',
-#                             verbose_name='Категория')
+class Recipes(models.Model):
+    id = models.IntegerField(primary_key=True)
+    category = models.TextField(db_column='Category', null=False)
+    submitted_by = models.TextField(
+        db_column='Submitted_By', null=False)
+    origin = models.TextField(db_column='Origin', null=False)
+    title = models.TextField(db_column='Title', null=False)
+    directions = models.TextField(
+        db_column='Directions', null=False)
+    comments = models.TextField(db_column='Comments', null=False)
+    created = models.DateTimeField(null=False)
+    modified = models.DateTimeField(null=True)
 
-    def __str__(self):# С помощью функции меняем то, как будет представлена запись в модели.
-        return self.title # Указываем, что она будет идентифицироваться с помощью своего заголовка.
+    def __str__(self):
+        return f"{self.id} - {self.title}"
 
-    class Meta:
-        verbose_name_plural = "Recipes"  # Указываем правильное написание для множественного числа слова Entry.
-
-
-from django.contrib.auth.models import User
-from django.db import models
-
+    # class Meta:
+    #     managed = False
+    #     db_table = 'recipes'
+    #     verbose_name_plural = 'Recipes'
 

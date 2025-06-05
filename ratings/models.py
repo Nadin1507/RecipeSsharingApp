@@ -4,11 +4,11 @@ from django.db import models
 
 from django.db import models
 from django.contrib.auth.models import User
-from recipes.models import Recipe
+from recipes.models import Recipes
 
 class Rating(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='ratings', verbose_name='Пользователь')
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='ratings', verbose_name='Рецепт')
+    recipe = models.ForeignKey(Recipes, on_delete=models.CASCADE, related_name='ratings', verbose_name='Рецепт')
     score = models.PositiveSmallIntegerField(choices=[(i, str(i)) for i in range(1, 6)], verbose_name='Оценка')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата оценки')
 

@@ -3,11 +3,11 @@ from django.db import models
 # Create your models here.
 
 from django.db import models
-from recipes.models import Recipe
+from recipes.models import Recipes
 from django.contrib.auth.models import User
 
 class Comment(models.Model):
-    recipe = models.ForeignKey(Recipe, on_delete=models.CASCADE, related_name='comments', verbose_name='Рецепт')
+    recipe = models.ForeignKey(Recipes, on_delete=models.CASCADE, related_name='comments', verbose_name='Рецепт')
     user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='comments', verbose_name='Пользователь')
     text = models.TextField(verbose_name='Комментарий')
     created_at = models.DateTimeField(auto_now_add=True, verbose_name='Дата создания')

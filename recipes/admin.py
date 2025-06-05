@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import Recipe
+from .models import Recipes
 
-admin.site.register(Recipe)  # Регистрируем модель.
+admin.site.register(Recipes)  # Регистрируем модель.

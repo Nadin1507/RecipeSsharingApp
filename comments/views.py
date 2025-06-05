@@ -3,7 +3,7 @@ from django.shortcuts import render
 # Create your views here.
 
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Comment, Recipe
+from .models import Comment, Recipes
 from .forms import CommentForm
 
 # Просмотр всех комментариев (можно ограничить по рецепту)
@@ -21,7 +21,7 @@ def comment_detail(request, pk):
 
 # Создание нового комментария
 def comment_create(request, recipe_id):
-    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    recipe = get_object_or_404(Recipes, pk=recipe_id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
