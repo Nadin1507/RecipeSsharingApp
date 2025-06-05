@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Rating, Recipe
+from .models import Rating, Recipes
 from .forms import RatingForm
 
 # Просмотр всех оценок текущего пользователя
@@ -16,7 +16,7 @@ def rating_list(request):
 # Добавление или редактирование оценки для рецепта
 @login_required
 def rating_create_update(request, recipe_id):
-    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    recipe = get_object_or_404(Recipes, pk=recipe_id)
     rating, created = Rating.objects.get_or_create(user=request.user, recipe=recipe)
     if request.method == 'POST':
         form = RatingForm(request.POST, instance=rating)

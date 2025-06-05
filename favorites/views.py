@@ -4,7 +4,7 @@ from django.shortcuts import render
 
 from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.decorators import login_required
-from .models import Favorite, Recipe
+from .models import Favorite, Recipes
 
 # Просмотр списка избранных рецептов текущего пользователя
 @login_required
@@ -15,7 +15,7 @@ def favorite_list(request):
 # Добавление рецепта в избранное
 @login_required
 def favorite_add(request, recipe_id):
-    recipe = get_object_or_404(Recipe, pk=recipe_id)
+    recipe = get_object_or_404(Recipes, pk=recipe_id)
     favorite, created = Favorite.objects.get_or_create(user=request.user, recipe=recipe)
     return redirect('recipe_detail', pk=recipe_id)
 
