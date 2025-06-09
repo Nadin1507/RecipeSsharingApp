@@ -6,6 +6,24 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Category
 from .forms import CategoryForm
 
+def index(request):
+    # Можно передать контекст, если нужно
+    context = {
+        'message': 'Добро пожаловать в раздел категорий!'
+    }
+    return render(request, 'categories/index.html', context)
+
+def add_category(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        if name:
+            Category.objects.create(name=name)
+            return redirect('index')  # или другая страница после добавления
+    return render(request, 'categories/add_category.html')
+
+
+
+
 # Просмотр всех категорий
 def category_list(request):
     categories = Category.objects.all()

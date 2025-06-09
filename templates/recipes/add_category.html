@@ -1,0 +1,17 @@
+<!-- categories/templates/categories/add_category.html -->
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Добавить категорию</title>
+</head>
+<body>
+    <h1>Добавить новую категорию</h1>
+    <form method="post">
+        {% csrf_token %}
+        <label for="name">Название категории:</label>
+        <input type="text" id="name" name="name" required>
+        <button type="submit">Добавить</button>
+    </form>
+</body>
+</html>

@@ -6,13 +6,22 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Comment, Recipes
 from .forms import CommentForm
 
+
+def index(request):
+    # Можно передать контекст, если нужно
+    context = {
+        'message': 'Добро пожаловать в раздел комментарии!'
+    }
+    return render(request, 'comments/index.html', context)
+
+
 # Просмотр всех комментариев (можно ограничить по рецепту)
-def comment_list(request, recipe_id=None):
-    if recipe_id:
-        comments = Comment.objects.filter(recipe__id=recipe_id)
-    else:
-        comments = Comment.objects.all()
-    return render(request, 'recipe_sharing_app/comment_list.html', {'comments': comments})
+# def comment_list(request, recipe_id=None):
+#     if recipe_id:
+#         comments = Comment.objects.filter(recipe__id=recipe_id)
+#     else:
+#         comments = Comment.objects.all()
+#     return render(request, 'recipe_sharing_app/comment_list.html', {'comments': comments})
 
 # Просмотр конкретного комментария
 def comment_detail(request, pk):
