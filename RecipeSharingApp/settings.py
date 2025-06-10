@@ -138,3 +138,19 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# CELERY_BROKER_URL = 'redis://localhost:6379/0'  # или 'amqp://guest@localhost:5672//' для RabbitMQ
+#
+# # URL для результата выполнения задач
+# CELERY_RESULT_BACKEND = 'redis://localhost:6379/0'  # или 'rpc://' или другие бэкенды
+#
+# # Время отслеживания задач, если нужно
+# CELERY_TASK_TRACK_STARTED = True
+#
+# # Формат сериализации задач и результатов
+# CELERY_TASK_SERIALIZER = 'json'
+# CELERY_RESULT_SERIALIZER = 'json'
+# CELERY_ACCEPT_CONTENT = ['json']
+#
+# # Время ожидания задач (по желанию)
+# CELERY_TASK_TIME_LIMIT = 300  # 5 минут

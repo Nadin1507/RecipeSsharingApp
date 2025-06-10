@@ -1,4 +1,4 @@
-# class Ingredients(models.Model):
+# class Recipes(models.Model):
 #     id = models.IntegerField(primary_key=True)
 #     recipe = models.ForeignKey(Recipes, on_delete=models.CASCADE, related_name='ingredients')
 #     ingredient = models.CharField(max_length=128)
@@ -16,6 +16,7 @@ from django.db import models
 
 class Recipes(models.Model):
     id = models.IntegerField(primary_key=True)
+    # recipe = models.ForeignKey(Recipes, on_delete=models.CASCADE, related_name='ingredients')
     category = models.TextField(db_column='Category', null=False)
     submitted_by = models.TextField(
         db_column='Submitted_By', null=False)
@@ -23,7 +24,7 @@ class Recipes(models.Model):
     title = models.TextField(db_column='Title', null=False)
     directions = models.TextField(
         db_column='Directions', null=False)
-    comments = models.TextField(db_column='Comments', null=False)
+    # comments = models.ForeignKey('comments.Comment', on_delete=models.CASCADE, related_name='recipe')
     created = models.DateTimeField(null=False)
     modified = models.DateTimeField(null=True)
 

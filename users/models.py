@@ -13,7 +13,7 @@ class UserRecipe(models.Model):
         return f"{self.title} by {self.user.username}"
 
     class Meta:
-        unique_together = ('user', 'recipe')
+        unique_together = ('user', 'title', 'description')
         verbose_name = 'Избранное'
         verbose_name_plural = 'Избранные рецепты'
 
