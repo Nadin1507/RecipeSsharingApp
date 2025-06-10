@@ -25,9 +25,17 @@ from django.urls import path
 from django.contrib import admin
 from django.urls import path, include
 
+from django.urls import path
+from django.contrib.auth import views as auth_views
 
 from django.contrib import admin
 from django.urls import path, include
+
+from . import views
+
+# urlpatterns = [
+#     path('', views.index, name='login'),# при обращении к адресу ''(главная страница), будем использовать представление (термин Django) log
+# ]
 
 
 urlpatterns = [
