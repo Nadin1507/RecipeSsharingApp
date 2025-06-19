@@ -1,20 +1,14 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-    <meta charset="UTF-8" />
-    <title>Категории</title>
+    <title>Рецепты</title>
 </head>
 <body>
-    <h1>завтраки</h1>
+    <h1>Список рецептов</h1>
+    {% for recipe in recipes %}
+        <h2>{{ recipe.title }}</h2>
+        <p>{{ recipe.description }}</p>
+        <hr>
+    {% endfor %}
 </body>
-    <h1>каши</h1>
-</body>
-    <h1>салаты</h1>
-</body>
-    <h1>супы</h1>
-</body>
-    <h1>мясо</h1>
-</body>
-    <h1>десерты</h1>
-
 </html>

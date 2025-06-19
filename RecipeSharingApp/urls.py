@@ -14,57 +14,40 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
-from django.contrib import admin
-from django.urls import path
-
-# urlpatterns = [
-#   path('admin/', admin.site.urls),
-# ]
 
 
-from django.contrib import admin
-from django.urls import path, include
-
-from django.urls import path
 from django.contrib.auth import views as auth_views
-
 from django.contrib import admin
 from django.urls import path, include
-
 from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
-
 from django.conf import settings
 from django.conf.urls.static import static
-
 from . import views
+from django.http import HttpResponse
+# from recipes import recipes
 
-# urlpatterns = [
-#     path('', views.index, name='login'),# при обращении к адресу ''(главная страница), будем использовать представление (термин Django) log
-# ]
+def index(request):
+    return HttpResponse("Добро пожаловать в рецепт-шэринг!")
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('recipes', include('recipes.urls')),
-    path('', include('categories.urls')),
-    path('', include('comments.urls')),
-    path('', include('favorites.urls')),
-    path('', include('users.urls')),
+    path('accounts/', views.accounts_home, name='accounts_home'),
+    path('recipes/', include('recipes.urls')),
+    path('categories/', include('categories.urls')),
+    path('comments/', include('comments.urls')),
+    path('favorites/', include('favorites.urls')),
+    path('auth/', include('users.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('login/', auth_views.LoginView.as_view(template_name='users/login.html'), name='login'),
+    path('logout/', auth_views.LogoutView.as_view(next_page='login'), name='logout'),
+    path('register/', views.register, name='register'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-from django.urls import path
-from . import views
 
-# urlpatterns = [
-    # path('login/', views.login_view, name='login'),
-#     path('register/', views.register_view, name='register'),
-#     path('logout/', views.logout_view, name='logout'),
-#     path('', views.home_view, name='home'),
-#     path('special/', views.special_page_view, name='special_page'),
-# ]
+
 
 
 

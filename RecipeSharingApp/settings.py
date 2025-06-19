@@ -149,6 +149,11 @@ REST_FRAMEWORK = {
     ),
 }
 
+REST_FRAMEWORK = {
+       'DEFAULT_RENDERER_CLASSES': [
+           'rest_framework.renderers.JSONRenderer',  # Только JSON, без HTML-шаблонов
+       ],
+   }
 
 # CELERY_BROKER_URL = 'redis://localhost:6379/0'  # или 'amqp://guest@localhost:5672//' для RabbitMQ
 #

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8" />
+    <title>Аккаунт</title>
+</head>
+<body>
+    <h2>Добро пожаловать в раздел аккаунтов!</h2>
+    <p>Здесь вы можете управлять своими настройками, просматривать профиль или выполнить другие действия.</p>
+    <ul>
+        <li><a href="{% url 'login' %}">Войти</a></li>
+        <li><a href="{% url 'logout' %}">Выйти</a></li>
+        <li><a href="{% url 'password_change' %}">Сменить пароль</a></li>
+    </ul>
+</body>
+</html>

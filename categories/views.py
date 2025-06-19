@@ -11,7 +11,7 @@ def index(request):
     context = {
         'message': 'Добро пожаловать в раздел категорий!'
     }
-    return render(request, 'categories/index.html', context)
+    return render(request, 'recipes/index.html', context)
 
 def add_category(request):
     if request.method == 'POST':

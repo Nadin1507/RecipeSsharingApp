@@ -29,7 +29,7 @@ def email_login(request):
                 messages.error(request, 'Пользователь с таким email не найден.')
     else:
         form = EmailAuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+    return render(request, 'recipes/login.html', {'form': form})
 
 
 
@@ -51,7 +51,7 @@ def register(request):
             messages.error(request, 'Пожалуйста, исправьте ошибки.')
     else:
         form = RegistrationForm()
-    return render(request, 'register.html', {'form': form})
+    return render(request, 'recipes/register.html', {'form': form})
 
 
 # # Просмотр списка всех пользователей
