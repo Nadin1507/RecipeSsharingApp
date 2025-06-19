@@ -20,3 +20,4 @@ class UserRecipe(models.Model):
     def __str__(self):
         return f"{self.user.username} выбрал рецепт {self.recipe.title}"
 
+

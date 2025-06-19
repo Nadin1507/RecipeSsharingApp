@@ -57,6 +57,9 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'RecipeSharingApp.urls'
 
+   # MEDIA_URL = '/media/'
+   # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -139,6 +142,14 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ),
+}
+
+
 # CELERY_BROKER_URL = 'redis://localhost:6379/0'  # или 'amqp://guest@localhost:5672//' для RabbitMQ
 #
 # # URL для результата выполнения задач
@@ -154,3 +165,4 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 #
 # # Время ожидания задач (по желанию)
 # CELERY_TASK_TIME_LIMIT = 300  # 5 минут
+# AUTH_USER_MODEL = 'myapp.CustomUser'

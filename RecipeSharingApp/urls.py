@@ -31,6 +31,11 @@ from django.contrib.auth import views as auth_views
 from django.contrib import admin
 from django.urls import path, include
 
+from rest_framework_simplejwt.views import TokenObtainPairView, TokenRefreshView
+
+from django.conf import settings
+from django.conf.urls.static import static
+
 from . import views
 
 # urlpatterns = [
@@ -40,10 +45,27 @@ from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('recipes.urls')),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('recipes', include('recipes.urls')),
     path('', include('categories.urls')),
     path('', include('comments.urls')),
     path('', include('favorites.urls')),
     path('', include('users.urls')),
-]
+    path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+
+from django.urls import path
+from . import views
+
+# urlpatterns = [
+    # path('login/', views.login_view, name='login'),
+#     path('register/', views.register_view, name='register'),
+#     path('logout/', views.logout_view, name='logout'),
+#     path('', views.home_view, name='home'),
+#     path('special/', views.special_page_view, name='special_page'),
+# ]
+
+
+
 
