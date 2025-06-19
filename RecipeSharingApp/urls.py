@@ -46,11 +46,11 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
-    path('recipes', include('recipes.urls')),
-    path('', include('categories.urls')),
-    path('', include('comments.urls')),
-    path('', include('favorites.urls')),
-    path('', include('users.urls')),
+    path('recipes/', include('recipes.urls')),
+    path('categories/', include('categories.urls')),
+    path('comments/', include('comments.urls')),
+    path('favorites/', include('favorites.urls')),
+    path('auth/', include('users.urls')),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -6,6 +6,7 @@
 </head>
 <body>
     <h1>Добавить новый рецепт</h1>
+    <input type="file" id="myfile" name="myfile" multiple><br><br>
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
@@ -15,5 +16,4 @@
 </body>
 </html>
 
-django
-   <img src="{{ recipe.image.url }}" alt="{{ recipe.name }}">
+
