@@ -15,3 +15,19 @@ class Comment(models.Model):
     def __str__(self):
         return f"Комментарий {self.user.username} к {self.recipe.title}"
 
+class Ingredient:
+    def __init__(self, name, quantity, unit, calories_per_unit=None):
+        self.name = name
+        self.quantity = quantity
+        self.unit = unit
+        self.calories_per_unit = calories_per_unit
+
+    def total_calories(self):
+        if self.calories_per_unit:
+            return self.quantity * self.calories_per_unit
+        return None
+
+    def __repr__(self):
+        return (f"Ingredient(name='{self.name}', "
+                f"quantity={self.quantity}, unit='{self.unit}', "
+                f"calories_per_unit={self.calories_per_unit})")
